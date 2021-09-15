@@ -1,0 +1,6 @@
+# ignore IDE files
+.idea
+# ignore Python bytecode
+**/*.pyc
+**/__pycache__
+
