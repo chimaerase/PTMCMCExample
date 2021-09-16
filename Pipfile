@@ -4,6 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+acor = {git = "https://github.com/dfm/acor.git"}
 ptmcmcsampler = {extras = ["mpi"], version = "*"}
 
 [dev-packages]

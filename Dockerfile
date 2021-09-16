@@ -6,11 +6,15 @@ WORKDIR /tmp
 
 RUN set -ex \
  && apt-get update \
- # install mpi4py dependencies
  && DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends \
+    # install Git so we can clone newer acor from GitHub (as suggested by PTMCMCSampler)
+    git \
+    # install direct mpi4py dependencies to use PTMCMCSampler's MPI support
     gcc \
     libopenmpi-dev \
-    openmpi-bin \
+    # install acor dependencies. acor is an optional dependency of PTMCMCSampler.
+    python3-dev \
+    g++ \
  # clean up install artifacts to keep image small
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* \
