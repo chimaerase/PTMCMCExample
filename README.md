@@ -62,7 +62,7 @@ This command runs a `bash` shell inside the Debian-based Docker container.  Pres
 back to the command prompt for the host OS.
 
 ```bash
-docker run -it --rm ptmcmc-example
+docker run -it --rm --cap-add=SYS_PTRACE ptmcmc-example
 ```
 
 
@@ -86,7 +86,7 @@ As above, launch (or use) a `bash` shell in a Docker container.  Press CRTL-D to
 container and return to the command prompt for the host OS.
 
 ```bash
-docker run -it --rm ptmcmc-example
+docker run -it --rm --cap-add=SYS_PTRACE ptmcmc-example
 ```
 
 For subsequent examples in this section, both example code and PTMCMCSampler code are run from the 

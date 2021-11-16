@@ -166,7 +166,7 @@ if __name__ == "__main__":
     # Get info about the MPI runtime environment
     comm = MPI.COMM_WORLD
     n_chains = comm.Get_size()  # total number of chains / MPI processes
-    process_rank = comm.Get_rank()  # ID of *this* chain / MPI process (zero-indexed)
+    process_rank = int(comm.Get_rank())  # ID of *this* chain / MPI process (zero-indexed)
 
     # Configure program arguments.
     parser = argparse.ArgumentParser(
@@ -209,6 +209,15 @@ if __name__ == "__main__":
         seed = seeds[process_rank]
         np.random.seed(seed)
         random.seed(seed)
+
+        import time
+        sleep_seconds = process_rank * 2
+        print(f"Process {process_rank+1}: sleeping for {sleep_seconds} s")
+        time.sleep(sleep_seconds)
+
+        # print some helpful outputs
+        print(f"Process {process_rank+1}: First NP random int: {np.random.randint(0, 1_000_000)}")
+        print(f"Process {process_rank+1}: First Python random int: {random.randint(0, 1_000_000)}")
 
     # Do the work!
     print(f"Running chain {process_rank + 1} of {n_chains}")
