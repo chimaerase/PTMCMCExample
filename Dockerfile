@@ -1,4 +1,4 @@
-FROM library/python:3.9-slim-buster
+FROM library/python:3.9-slim-bullseye
 LABEL maintainer="Mark Forrer<mark.forrer@lbl.gov>"
 ENV PYTHONUNBUFFERED=1 LANG=C.UTF-8
 COPY Pipfile* /tmp/
